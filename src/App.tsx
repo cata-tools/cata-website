@@ -1,33 +1,48 @@
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import TrustedBySection from './components/TrustedBySection'
-import UseCasesSection from './components/UseCasesSection'
-import FeaturesSection from './components/FeaturesSection'
-import ContactSection from './components/ContactSection'
-import Footer from './components/Footer'
 import { motion } from 'framer-motion'
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { 
-      duration: 0.7,
-      delay: 0.1
-    }
-  }
-}
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div 
+      className="min-h-screen flex flex-col"
+      style={{
+        background: 'linear-gradient(to bottom, #E7F0FD 0%, #B8D4F0 100%)'
+      }}
+    >
       <Navbar />
-      <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}><Hero /></motion.div>
-      <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}><TrustedBySection /></motion.div>
-      <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}><UseCasesSection /></motion.div>
-      <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}><FeaturesSection /></motion.div>
-      <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}><ContactSection /></motion.div>
-      <Footer />
+      <div className="relative min-h-screen flex items-center justify-center pt-20 px-6">
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-3xl min-[430px]:text-4xl min-[587px]:text-5xl md:text-6xl font-bold text-center leading-tight"
+        >
+          <span
+            className="inline-block bg-gradient-to-r from-[#007AFF] to-[#D305C2] bg-clip-text text-transparent"
+            style={{
+              animation: 'gradientSpin 4s linear infinite',
+              backgroundSize: '200% 200%',
+            }}
+          >
+            Coming Soon
+          </span>
+        </motion.h1>
+        <style>
+          {`
+            @keyframes gradientSpin {
+              0% {
+                background-position: 0% 50%;
+              }
+              50% {
+                background-position: 100% 50%;
+              }
+              100% {
+                background-position: 0% 50%;
+              }
+            }
+          `}
+        </style>
+      </div>
     </div>
   )
 }
